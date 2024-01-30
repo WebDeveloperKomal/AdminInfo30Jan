@@ -6,7 +6,6 @@
 // Credential{email:'',password:''};
 // localStorage.setItem('token', response.jwtToken);
 
-
 function saveData() {
     var saveData = {
         name: document.getElementById('name').value,
@@ -14,6 +13,7 @@ function saveData() {
         information: document.getElementById('information').value,
     };
 
+    // Retrieve JWT token from localStorage
     var jwtToken = localStorage.getItem('jwtToken');
 
     console.log('Request Data:', JSON.stringify(saveData));
@@ -23,37 +23,38 @@ function saveData() {
         return;
     }
 
+    if (!jwtToken) {
+        // JWT token is missing, prompt user to log in again
+        alert('JWT token is missing. Please log in again.');
+        // Redirect user to login page or perform any other action as necessary
+        return;
+    }
+
     fetch('http://localhost:8181/ibg-infotech/auth/save-services-content', {
         method: 'POST',
-        body: JSON.stringify(saveData),
+        body: new URLSearchParams(saveData), // Convert object to URLSearchParams
         headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + jwtToken, // Updated key to 'authToken'
-            // 'Authorization': `Bearer ${jwtToken}`,
-            // 'Authorization': 'Bearer ' + jwtToken('email:password'),
-            // 'Authorization': `Bearer ${jwtToken}`,
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Bearer ' + jwtToken,
         },
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-
-        .then(data => {
-            console.log('Server response:', data);
-            alert('Save Data Successfully!');
-            // Redirect to page if needed
-            // window.location.href = 'Services.html';
-        })
-
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Failed to save data. Please try again.');
-        });
+    
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Server response:', data);
+        alert('Save Data Successfully!');
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to save data. Please try again.');
+    });
 }
+
 
 // --------------------------get data------------------------------------------
 
