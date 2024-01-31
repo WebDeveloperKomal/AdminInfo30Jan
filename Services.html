@@ -10,9 +10,7 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
-    <script src="services-form.js"></script>
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+    <script src="services.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
         integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
@@ -173,6 +171,7 @@
                     </ul><!-- End Notification Dropdown Items -->
 
                 </li><!-- End Notification Nav -->
+
 
                 <li class="nav-item dropdown">
 
@@ -556,7 +555,7 @@
                                 <div class="card-block table-border-style">
                                     <div class="table-responsive">
 
-                                        <table class="table" id="dtTable">
+                                        <table class="table" id="dataTable">
 
                                             <thead>
                                                 <tr>
@@ -569,69 +568,42 @@
                                             </thead>
 
                                             <tbody id="dataTableBody">
-                                            </tbody>
 
+                                                <tr>
+                                                    <!-- <th scope="row">1</th>
+                                                    <td>Team Member</td>
+                                                    <td>Full stack developer</td>
+                                                    <td>hello IBG </td> -->
+
+
+                                                    <td><a href="#" class="waves-effect" data-toggle="tooltip"
+                                                            data-placement="top" title=""
+                                                            data-original-title="Edit Testimonial"><i
+                                                                class="ti-pencil"></i>
+                                                            Edit</a>
+
+
+                                                        <a href="javascript:void(0);" class="waves-effect delete_entry"
+                                                            data-toggle="tooltip" data-placement="top" title=""
+                                                            data-original-title="Delete Testimonial" data-id="17"
+                                                            data-tabl="testimonials"><i class="ti-trash"></i> Delete</a>
+                                                    </td>
+
+                                                </tr>
+
+                                            </tbody>
                                         </table>
 
-
-                                        <script>
-
-                                            document.addEventListener('DOMContentLoaded', getData);
-
-                                            function getData() {
-                                                fetch('http://localhost:8181/ibg-infotech/auth/get-all-services-content')
-                                                    .then(response => response.json())
-                                                    .then(data => {
-                                                        console.log(data);
-                                                        populateTable(data);
-                                                    })
-                                                    .catch(error => {
-                                                        console.error('Error fetching data:', error);
-                                                    });
-                                            }
-
-
-                                            function populateTable(data) {
-                                                const tableBody = document.getElementById('dataTableBody');
-
-                                                tableBody.innerHTML = '';
-
-                                                data.forEach((item, index) => {
-                                                    const row = document.createElement('tr');
-                                                    row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${item.name}</td>
-            <td>${item.title}</td>
-            <td>${item.information}</td>
-            <td>${item.active ? 'Active' : 'Inactive'}</td>
-            <td>
-                <button class="update-btn" data-index="${index}"><i class="fas fa-edit"></i></button>
-                <button class="delete-btn" data-index="${index}"><i class="fas fa-trash-alt"></i></button>
-            </td>
-        `;
-                                                    tableBody.appendChild(row);
-                                                });
-
-                                            }
-
-                                            //load the page
-                                            // populateTable();
-
-                                        </script>
-
-
                                     </div>
+
                                 </div>
-
-
                             </div>
                         </div>
-                    </div>
 
-                    <div id="styleSelector"></div>
+                        <div id="styleSelector"></div>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
         </div>
         </div>
