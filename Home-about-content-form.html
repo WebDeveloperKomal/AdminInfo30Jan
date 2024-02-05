@@ -10,6 +10,8 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+    <script src="home-about-content-form.js"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
         integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
 
@@ -263,9 +265,9 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" href="index.html">
                                 <i class="bi bi-box-arrow-right"></i>
-                                <span>Sign Out</span>
+                                <span>Log Out</span>
                             </a>
                         </li>
 
@@ -354,7 +356,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="Add-services.html">
+                        <a href="Services2.html">
                             <i class="bi bi-circle"></i><span>Why IBG Infotech</span>
                         </a>
                     </li>
@@ -415,7 +417,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="Add-blog.html">
+                <a class="nav-link collapsed" href="Blogs.html">
                     <i class="bi bi-substack"></i>
                     <span>Blogs</span>
                 </a>
@@ -556,7 +558,7 @@
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">About</label>
-                                                        <input type="text" class="form-control" name="about">
+                                                        <input type="text" class="form-control" name="about" id="about">
                                                     </div>
                                                 </div>
 
@@ -564,7 +566,8 @@
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">About Title</label>
-                                                        <input type="text" class="form-control" name="about title">
+                                                        <input type="text" class="form-control" name="about title"
+                                                            id="about_title">
                                                     </div>
                                                 </div>
 
@@ -573,7 +576,17 @@
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">About Text</label>
-                                                        <input type="text" class="form-control" name="about text">
+                                                        <input type="text" class="form-control" name="about text"
+                                                            id="about_text">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12">
+                                                        <label class="col-form-label">About Text</label>
+                                                        <textarea class="form-control" rows="6" cols="6"
+                                                            colname="customer review text" id="about_text"></textarea>
                                                     </div>
                                                 </div>
 
@@ -581,16 +594,19 @@
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Image</label>
-                                                        <img class="slide_img form-control" src="#">
+                                                        <img id="imagePreview" class="slide_img form-control" src="#"
+                                                            alt="Preview">
+                                                        <!-- style="display: none;" -->
                                                     </div>
                                                 </div>
 
-                                                <!-- https://www.legaster.com/public/assets/images/service_category/1668278560_e0d973a644f7d48b103d.jpg -->
 
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Upload Image</label>
-                                                        <input type="file" class="form-control" name="image">
+                                                        <input type="file" class="form-control" name="image"
+                                                            id="imageFile" onchange="previewImage()">
+                                                        <input type="hidden" id="imagePath" name="imagePath">
                                                     </div>
                                                 </div>
 
@@ -598,8 +614,10 @@
 
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <a href="Home-about-us-content.html" button
-                                                            class="btn btn-primary">Save</button></a>
+                                                        <a button class="btn btn-primary"
+                                                            onclick="saveData();  return false;"
+                                                            style="color: white;">Save</button></a>
+                                                        <!-- href="Home-about-us-content.html" -->
                                                     </div>
                                                 </div>
 
