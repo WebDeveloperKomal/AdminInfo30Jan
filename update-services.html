@@ -9,6 +9,8 @@
     <meta name="robots" content="noindex, nofollow">
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="services.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
         integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
@@ -541,113 +543,35 @@
                                             </div>
                                         </div>
                                         <div class="card-block">
-
-
                                             <form action="https://www.legaster.com/admin-panel/contact-us" method="post"
                                                 enctype="multipart/form-data">
                                                 <input type="hidden" name="csrf_test_name"
                                                     value="13c1545968d4aa8eac45545a7a2ceb54" />
 
-                                                <div class="form-group row">
-                                                    <!-- 
-                                                    <div class="col-sm-12">
-                                                        <label class="col-form-label">Name</label>
-                                                        <input type="text" class="form-control" name="address">
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                            <label class="col-form-label">Name</label>
+                                                            <input type="text" class="form-control" name="name" id="name">
+                                                        </div>
                                                     </div>
- -->
-
-                                                    <div class="col-sm-12">
-                                                        <label class="col-form-label">Name</label>
-                                                        <input type="text" class="form-control" name="name">
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                            <label class="col-form-label">Title</label>
+                                                            <input type="text" class="form-control" name="title" id="title">
+                                                        </div>
                                                     </div>
-
-                                                </div>
-
-
-                                                <div class="form-group row">
-
-                                                    <div class="col-sm-12">
-                                                        <label class="col-form-label">title</label>
-                                                        <input type="text" class="form-control" name="title">
-                                                    </div>
-                                                </div>
-
-
-
-                                                <div class="form-group row">
-                                                    <div class="col-sm-12">
-                                                        <label class="col-form-label">Information</label>
-                                                        <input type="text" class="form-control" name="information">
-                                                    </div>
-                                                </div>
-
-
-                                                <!-- <div class="form-group row">
-
-                                                    <div class="col-sm-6">
-                                                        <label class="col-form-label">Services</label>
-                                                        <input type="text" class="form-control" name="email_address">
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                            <label class="col-form-label">Information</label>
+                                                            <input type="text" class="form-control" name="information" id="information">
+                                                        </div>
                                                     </div>
 
-
-                                                    <div class="col-sm-6">
-                                                        <label class="col-form-label">text</label>
-                                                        <input type="text" class="form-control" name="contact_number">
-                                                    </div>
-
-                                                </div> -->
-
-
-                                                <!-- 
-                                                <div class="form-group row">
-
-                                                    <div class="col-sm-12">
-                                                        <label class="col-form-label">Company</label>
-                                                        <input type="text" class="form-control" name="company">
-                                                    </div>
-
-                                                </div>
-
-
-
-                                                <div class="form-group row" style="display:none;">
-
-                                                    <div class="col-sm-6">
-                                                        <label class="col-form-label">Email 2</label>
-                                                        <input type="text" class="form-control" name="email_address2"
-                                                            value="support@shriraminterio.com">
-                                                    </div>
-
-                                                </div> -->
-
-
-                                                <!-- <div class="form-group row">
-
-                                                    <div class="col-sm-12">
-                                                        <label class="col-form-label">Map(Embeded Code)</label>
-                                                        <textarea rows="3" cols="5" class="form-control"
-                                                            name="map_code"></textarea>
-                                                    </div>
-                                                </div> -->
-
-
-                                                <!-- <div class="form-group row">
-                                                    <div class="col-sm-12">
-                                                        <label class="col-form-label">Map</label>
-                                                        <p></p>
-                                                    </div>
-                                                </div> -->
-
-                                                <!--<div class="form-group row">
-            <div class="col-sm-12">
-                <label class="col-form-label">About Company</label>
-                <textarea rows="3" cols="5" class="form-control" name="message"></textarea>
-            </div>
-        </div>-->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <a href="Services.html" button
-                                                            class="btn btn-primary">Save</button></a>
+                                                        <a href="Services.html" button class="btn btn-primary" id="updateBtn"
+                                                            onclick="updateData();">Update</button></a>
+                                                        <!-- href="Services.html" -->
                                                     </div>
                                                 </div>
                                             </form>
@@ -668,10 +592,6 @@
         </div>
         </div>
         </div>
-
-
-
-
 
     </main><!-- End #main -->
 
@@ -707,13 +627,6 @@
         integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA=="
         data-cf-beacon='{"rayId":"8465544dad3f0e38","version":"2023.10.0","token":"68c5ca450bae485a842ff76066d69420"}'
         crossorigin="anonymous"></script>
-
-
-
-
-
-
-
 
     <script type="text/javascript" src="https://www.legaster.com/public/assets/js/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.legaster.com/public/assets/js/jquery-ui/jquery-ui.min.js"></script>
@@ -802,6 +715,40 @@
 
         });
     </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+            const name = urlParams.get('name');
+            const title = urlParams.get('title');
+            const information = urlParams.get('information');
+
+            console.log("ID:", id); // Check the value of id
+            console.log("Name:", name); // Check the value of name
+            console.log("Title:", title); // Check the value of title
+            console.log("Information:", information); // Check the value of information
+
+            // Populate form fields with the fetched data
+            document.getElementById('name').value = name;
+            document.getElementById('title').value = title;
+            document.getElementById('information').value = information;
+
+            // Add event listener for update button
+            document.getElementById('updateBtn').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent form submission
+
+                // Fetch updated data and call updateService function
+                const updatedName = document.getElementById('name').value;
+                const updatedTitle = document.getElementById('title').value;
+                const updatedInformation = document.getElementById('information').value;
+
+                updateService(id, updatedName, updatedTitle, updatedInformation);
+            });
+        });
+    </script>
+
 
 </body>
 

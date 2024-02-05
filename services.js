@@ -1,3 +1,5 @@
+var jwtToken = localStorage.getItem('jwtToken');
+
 document.addEventListener('DOMContentLoaded', getData);
 
 function getData() {
@@ -9,21 +11,20 @@ function getData() {
             'Authorization': 'Bearer ' + jwtToken,
         },
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data);
-        populateTable(data.data); // Assuming your data object has a 'data' property containing the array
-    })
-    .catch(error => {
-        console.error('Error fetching data:', error);
-    });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            populateTable(data.data); // Assuming your data object has a 'data' property containing the array
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
 }
-
 function populateTable(data) {
     const tableBody = document.getElementById('dataTableBody');
     tableBody.innerHTML = '';
@@ -37,11 +38,38 @@ function populateTable(data) {
                 <td>${item.title}</td>
                 <td>${item.information}</td>
                 <td>
-                    <a href="#" class="edit-btn" data-id="${item.id}"><i class="ti-pencil"></i> Edit</a>
-                    <a href="Services.html" class="delete-btn" data-id="${item.id}"><i class="ti-trash"></i> Delete</a>
+                    <button class="edit-btn" data-id="${item.id}">Edit</button>
+                    <button class="delete-btn" data-id="${item.id}">Delete</button>
                 </td>
             `;
             tableBody.appendChild(row);
+
+            // Add event listener to edit button
+            const editBtn = row.querySelector('.edit-btn');
+            editBtn.addEventListener('click', function () {
+                const id = editBtn.getAttribute('data-id');
+                console.log("Edit button clicked for ID: " + id);
+                // Redirect to update-service.html and pass data as query parameters
+                fetch(`http://localhost:8181/ibg-infotech/auth/get-services-content/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Bearer ' + jwtToken,
+                    },
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Redirect to update-services.html and pass data as query parameters
+                        window.location.href = `update-services.html?id=${id}&name=${data.data.name}&title=${data.data.title}&information=${data.data.information}`;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching service data:', error);
+                    });
+            });
 
             // Add event listener to delete button
             const deleteBtn = row.querySelector('.delete-btn');
@@ -65,32 +93,83 @@ function deleteService(id) {
             'Authorization': 'Bearer ' + jwtToken,
         },
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data);
-        // Show SweetAlert upon successful deletion
-        Swal.fire({
-            icon: 'success',
-            title: 'Deleted!',
-            text: 'Service has been deleted successfully.',
-        }).then((result) => {
-            // Reload the data or update the UI as needed
-            // For example, you can remove the deleted row from the table
-            getData(); // Reload the data after deletion
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            // Show SweetAlert upon successful deletion
+            Swal.fire({
+                icon: 'success',
+                title: 'Deleted!',
+                text: 'Service has been deleted successfully.',
+            }).then((result) => {
+                // Reload the data or update the UI as needed
+                // For example, you can remove the deleted row from the table
+                getData(); // Reload the data after deletion
+            });
+        })
+        .catch(error => {
+            console.error('Error deleting service:', error);
+            // Show SweetAlert for error
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: 'Failed to delete the service. Please try again later.',
+            });
         });
+}
+
+function updateData() {
+    // Retrieve the values from the form fields
+    const updatedName = document.getElementById('name').value;
+    const updatedTitle = document.getElementById('title').value;
+    const updatedInformation = document.getElementById('information').value;
+
+    // Call the updateService function with the retrieved values
+    updateService(id, updatedName, updatedTitle, updatedInformation);
+}
+
+
+function updateService(id, name, title, information) {
+    var jwtToken = localStorage.getItem('jwtToken');
+
+    fetch(`http://localhost:8181/ibg-infotech/auth/update-services-content/${id}?name=${name}&title=${title}&information=${information}`, {
+        method: 'PUT',
+        headers: {
+            'Authorization': 'Bearer ' + jwtToken,
+        },
     })
-    .catch(error => {
-        console.error('Error deleting service:', error);
-        // Show SweetAlert for error
-        Swal.fire({
-            icon: 'error',
-            title: 'Error!',
-            text: 'Failed to delete the service. Please try again later.',
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            // Show SweetAlert upon successful update
+            Swal.fire({
+                icon: 'success',
+                title: 'Updated!',
+                text: 'Service has been updated successfully.',
+            }).then((result) => {
+                // Reload the data or update the UI as needed
+                // For example, you can update the row in the table
+                window.location.href = 'Services.html';
+                getData(); // Reload the data after update
+            });
+        })
+        .catch(error => {
+            console.error('Error updating service:', error);
+            // Show SweetAlert for error
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: 'Failed to update the service. Please try again later.',
+            });
         });
-    });
 }
