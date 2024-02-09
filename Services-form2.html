@@ -10,6 +10,9 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="Services-form2.js"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
         integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
 
@@ -354,7 +357,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="Add-services.html">
+                        <a href="Services2.html">
                             <i class="bi bi-circle"></i><span>Why IBG Infotech</span>
                         </a>
                     </li>
@@ -471,34 +474,6 @@
             </li>
             <!-- End Register Page Nav -->
 
-
-
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-login.html">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Log Out</span>
-                </a>
-            </li> -->
-            <!-- End Login Page Nav -->
-
-
-
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-error-404.html">
-                    <i class="bi bi-dash-circle"></i>
-                    <span>Error 404</span>
-                </a>
-            </li> -->
-            <!-- End Error 404 Page Nav -->
-
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-blank.html">
-                    <i class="bi bi-file-earmark"></i>
-                    <span>Blank</span>
-                </a>
-            </li> -->
-            <!-- End Blank Page Nav -->
-
         </ul>
 
     </aside>
@@ -511,13 +486,7 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Services</h1>
-            <!-- <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Contact List</li>
-                </ol>
-            </nav> -->
+            <h1>Why We</h1>
         </div><!-- End Page Title -->
 
 
@@ -531,136 +500,68 @@
                             <script src="https://cdn.ckeditor.com/4.12.1/standard-all/ckeditor.js"></script>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <!-- Basic Form Inputs card start -->
                                     <div class="card">
                                         <div class="card-header">
                                             <h5>Why IBG Infotech</h5>
-                                            <div class="card-header-right"><i class="icofont icofont-spinner-alt-5"></i>
+                                            <div class="card-header-right">
+                                                <i class="icofont icofont-spinner-alt-5"></i>
                                             </div>
                                             <div class="card-header-right">
                                                 <i class="icofont icofont-spinner-alt-5"></i>
                                             </div>
                                         </div>
                                         <div class="card-block">
-
-
                                             <form action="https://www.legaster.com/admin-panel/edit-service-category/66"
                                                 method="post" enctype="multipart/form-data">
                                                 <input type="hidden" name="csrf_test_name"
                                                     value="096ea39265669eaff30f4bc704d6260c" />
-
+        
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Name</label>
                                                         <input type="text" class="form-control" name="name">
-
                                                     </div>
                                                 </div>
-
-
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Title</label>
-                                                        <input type="text" class="form-control" name="name">
-
+                                                        <input type="text" class="form-control" name="title">
                                                     </div>
                                                 </div>
-
-
-                                                <!-- ------------------------------------------------------ -->
-
-
-
-
+        
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Description</label>
-                                                        <textarea class="form-control" name="description" id="editor2">
-                                                            <!-- <p>Legaster&nbsp;offers a diverse range of services in real estate including residential, commercial, industrial, hotels, tourism, SEZs space, etc. We have conducted due diligence, advised upon, structured, and negotiated on land acquisitions, joint development arrangements, leasing, and financing for various types of properties including in the case of redevelopments, slum rehabilitation projects, affordable housing projects, government leases, mega food parks, logistic parks, solar projects, integrated townships, etc. across states in India.</p>
-
-<p>Additionally,<strong>&nbsp;</strong>Legaster&nbsp;has also advised on an entire spectrum of issues affecting investment in the real estate space in the country.</p>
-
-<p>The team also advises various developers, investors, and financing institutions in relation to compliances under RERA, across different states in India. This includes handholding our clients and working very closely with them for registration of various projects, including discussions with the technical and accounting teams of the developers, wherever required.&nbsp;<strong>Legaster&rsquo;s</strong>&nbsp;team has a good understanding and grip on the local real estate laws affecting projects and real estate transactions across states in the country and our endeavor is to bridge the gap between addressing legal requirements regulating investments in this sector and tying them to commercial viable solutions.</p>
-
-<h3><strong>Land Acquisition</strong></h3>
-
-<ol>
-<li>Comprehensive title searches and due diligence across most states in India.</li>
-<li>Advice on the statutory permissions and/or approvals to be procured, zoning requirements, including the timelines involved.</li>
-<li>Structuring and drafting conveyance documents in case of aggregation and otherwise.</li>
-<li>Advice on the Stamp duty, registration fees, and other acquisition costs.</li>
-</ol>
-
-<h3><strong>Project Development and Construction Contracts</strong></h3>
-
-<ol>
-<li>Structuring and advising on the development contracts in relation to different projects including joint development arrangements, redevelopments, slum rehabilitation schemes, etc.</li>
-<li>Structuring and advising on the development of industrial parks, logistic parks, SEZs, etc.</li>
-<li>Advising on documentation and agreements with contractors, architects, engineers, etc.</li>
-<li>Drafting of the documents in relation to the sale/allotment of the units/areas under a project including an agreement to sell, conveyance documents, lease documents, possession letters, etc.</li>
-</ol>
-
-<p><strong>RERA Compliance Advisory</strong></p>
-
-<ol>
-<li>Advising developers on the compliances under RERA and handholding for the registration of projects with RERA authorities in different states in India.</li>
-<li>Advising developers and promoters on compliance under RERA in relation to specific instances under various projects.</li>
-<li>Advising banks, financial institutions, and developers on the compliances under RERA in various states including the required mechanisms in different projects to ensure that the projects are in compliance with the provisions of RERA.</li>
-</ol>
-
-<h3><strong>Due Diligence</strong></h3>
-
-<ol>
-<li>Conducting title searches with the offices of the Sub-Registrar of Assurances, Revenue Authorities, etc., and providing title due diligence reports and title certificates in relation to properties situated in different states in India for the purposes of acquisitions, mortgages, etc.</li>
-<li>Conducting due diligence&nbsp;of the property-owning entities where the structure requires the acquisition of or investments in the entities owning subject properties.</li>
-</ol> -->
-</textarea>
+                                                        <textarea class="form-control" name="description"
+                                                            id="editor2"> </textarea>
                                                     </div>
                                                 </div>
-
-
-                                                <!--<div class="form-group row">
-            <div class="col-sm-6">
-             
-                <input type="checkbox"   name="is_end_to_end_interior" value="1"> End-to-end interior solutions ?
-            </div>
-             
-        </div>-->
-
-
+        
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Image</label>
-                                                        <img class="slide_img form-control" src="#">
+                                                        <img id="selected-image" class="slide_img form-control" src="#"
+                                                            alt="Selected Image">
                                                     </div>
                                                 </div>
-
-                                                <!-- https://www.legaster.com/public/assets/images/service_category/1668278560_e0d973a644f7d48b103d.jpg -->
-
+        
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Upload Image</label>
-                                                        <input type="file" class="form-control" name="image">
+                                                        <input type="file" class="form-control" name="image"
+                                                            id="image-input">
                                                     </div>
                                                 </div>
-
-
-                                                <!-- ----------------------------------------------------------- -->
-
-
+        
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <a href="Services2.html" button
-                                                            class="btn btn-primary">Save</button></a>
+                                                        <button type="submit" class="btn btn-primary"
+                                                            onclick="saveData(); return false;">Save</button>
                                                     </div>
                                                 </div>
-
-
                                             </form>
                                         </div>
                                     </div>
-                                    <!-- Basic Form Inputs card end -->
-
                                 </div>
                             </div>
                             <script>
@@ -670,29 +571,15 @@
                             </script>
                         </div>
                     </div>
-
+        
                     <div id="styleSelector"></div>
                 </div>
             </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-
-
+        </div>        
 
 
 
     </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-    <!-- <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; Copyright <strong><span>IBG-Infotech Pvt.Ltd</span></strong>. All Rights Reserved
-        </div>
-    </footer> -->
-    <!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
@@ -810,7 +697,30 @@
                 ]
             });
 
+        });
+    </script>
 
+    <script>
+        // Get a reference to the file input and image tag
+        const imageInput = document.getElementById('image-input');
+        const selectedImage = document.getElementById('selected-image');
+
+        // Add event listener to the file input
+        imageInput.addEventListener('change', function () {
+            // Check if any file is selected
+            if (imageInput.files && imageInput.files[0]) {
+                // Create a FileReader object
+                const reader = new FileReader();
+
+                // Set up the reader onload function
+                reader.onload = function (e) {
+                    // Update the src attribute of the image tag
+                    selectedImage.src = e.target.result;
+                };
+
+                // Read the data URL of the selected file
+                reader.readAsDataURL(imageInput.files[0]);
+            }
         });
     </script>
 
