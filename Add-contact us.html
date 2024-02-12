@@ -10,6 +10,9 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="add-contact-us.js"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
         integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
 
@@ -354,7 +357,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="Add-services.html">
+                        <a href="Services2.html">
                             <i class="bi bi-circle"></i><span>Why IBG Infotech</span>
                         </a>
                     </li>
@@ -543,88 +546,39 @@
                                         <div class="card-block">
 
 
-                                            <form action="https://www.legaster.com/admin-panel/contact-us" method="post"
+                                            <form action="#" method="post"
                                                 enctype="multipart/form-data">
                                                 <input type="hidden" name="csrf_test_name"
                                                     value="13c1545968d4aa8eac45545a7a2ceb54" />
 
                                                 <div class="form-group row">
-                                                    <!-- 
-                                                    <div class="col-sm-12">
-                                                        <label class="col-form-label">Name</label>
-                                                        <input type="text" class="form-control" name="address">
-                                                    </div>
- -->
-
+                                                
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Address</label>
-                                                        <input type="text" class="form-control" name="address">
+                                                        <input type="text" class="form-control" name="address"   id="address">
                                                     </div>
 
                                                 </div>
-
 
                                                 <div class="form-group row">
 
                                                     <div class="col-sm-6">
                                                         <label class="col-form-label">Phone Number</label>
-                                                        <input type="text" class="form-control" name="contact_number">
+                                                        <input type="text" class="form-control" name="phone"  id="phone">
                                                     </div>
-
 
                                                     <div class="col-sm-6">
                                                         <label class="col-form-label">Email</label>
-                                                        <input type="text" class="form-control" name="email_address">
+                                                        <input type="text" class="form-control" name="email"  id="email">
                                                     </div>
 
                                                 </div>
 
-
-                                                <!-- <div class="form-group row">
-
-                                                    <div class="col-sm-6">
-                                                        <label class="col-form-label">Services</label>
-                                                        <input type="text" class="form-control" name="email_address">
-                                                    </div>
-
-
-                                                    <div class="col-sm-6">
-                                                        <label class="col-form-label">text</label>
-                                                        <input type="text" class="form-control" name="contact_number">
-                                                    </div>
-
-                                                </div> -->
-
-
-                                                <!-- 
                                                 <div class="form-group row">
-
-                                                    <div class="col-sm-12">
-                                                        <label class="col-form-label">Company</label>
-                                                        <input type="text" class="form-control" name="company">
-                                                    </div>
-
-                                                </div>
-
-
-
-                                                <div class="form-group row" style="display:none;">
-
-                                                    <div class="col-sm-6">
-                                                        <label class="col-form-label">Email 2</label>
-                                                        <input type="text" class="form-control" name="email_address2"
-                                                            value="support@shriraminterio.com">
-                                                    </div>
-
-                                                </div> -->
-
-
-                                                <div class="form-group row">
-
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Map(Embeded Code)</label>
                                                         <textarea rows="5" cols="5" class="form-control"
-                                                            name="map_code"></textarea>
+                                                            name="map" id="map"></textarea>
                                                     </div>
                                                 </div>
 
@@ -636,16 +590,11 @@
                                                     </div>
                                                 </div>
 
-                                                <!--<div class="form-group row">
-            <div class="col-sm-12">
-                <label class="col-form-label">About Company</label>
-                <textarea rows="3" cols="5" class="form-control" name="message"></textarea>
-            </div>
-        </div>-->
+      
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <a href="Contact-Us.html" button
-                                                            class="btn btn-primary">Save</button></a>
+                                                        <a button
+                                                            class="btn btn-primary" onclick="saveData();">Save</button></a>
                                                     </div>
                                                 </div>
                                             </form>
