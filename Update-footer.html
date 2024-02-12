@@ -10,6 +10,9 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="footer-form.js"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
         integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
 
@@ -356,7 +359,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="Add-services.html">
+                        <a href="Services2.html">
                             <i class="bi bi-circle"></i><span>Why IBG Infotech</span>
                         </a>
                     </li>
@@ -549,81 +552,71 @@
                                         <div class="card-block">
 
 
-                                            <form action="https://www.legaster.com/admin-panel/edit-service-category/66"
-                                                method="post" enctype="multipart/form-data">
+                                            <form action="#" method="post" enctype="multipart/form-data">
                                                 <input type="hidden" name="csrf_test_name"
                                                     value="096ea39265669eaff30f4bc704d6260c" />
 
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
-                                                        <label class="col-form-label">Ping Now</label>
-                                                        <input type="text" class="form-control" name="ping now">
-
+                                                        <!-- <label class="col-form-label">ID</label> -->
+                                                        <input type="hidden" class="form-control" name="id" id="id">
                                                     </div>
                                                 </div>
 
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12">
+                                                        <label class="col-form-label">Ping Now</label>
+                                                        <input type="text" class="form-control" name="ping_now"
+                                                            id="ping_now">
+                                                    </div>
+                                                </div>
 
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Text</label>
-                                                        <input type="text" class="form-control" name="text">
-
+                                                        <input type="text" class="form-control" name="text" id="text">
                                                     </div>
                                                 </div>
-
-
-                                                <!-- ------------------------------------------------------ -->
-
-
-
-
 
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
-                                                        <label class="col-form-label">Image</label>
-                                                        <img class="slide_img form-control" src="#">
+                                                        <label class="col-form-label">Image Preview</label>
+                                                        <img id="selected-image" class="slide_img form-control" src="#"
+                                                            alt="Selected Image">
                                                     </div>
                                                 </div>
-
-                                                <!-- https://www.legaster.com/public/assets/images/service_category/1668278560_e0d973a644f7d48b103d.jpg -->
-
+        
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Upload Image</label>
-                                                        <input type="file" class="form-control" name="image">
+                                                        <input type="file" class="form-control" name="image"
+                                                            id="image-input">
                                                     </div>
                                                 </div>
-
-
-                                                <!-- ----------------------------------------------------------- -->
-
 
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Open Hours</label>
-                                                        <input type="text" class="form-control" name="open hours">
-
+                                                        <input type="text" class="form-control" name="open_hours"
+                                                            id="open_hours">
                                                     </div>
                                                 </div>
-
 
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
-                                                        <label class="col-form-label">Heading</label>
-                                                        <input type="text" class="form-control" name="heading">
-
+                                                        <label class="col-form-label">Header</label>
+                                                        <input type="text" class="form-control" name="footer_title"
+                                                            id="footer_title">
                                                     </div>
                                                 </div>
-
-
 
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <a href="Footer.html" button
-                                                            class="btn btn-primary">Save</button></a>
+                                                        <a button class="btn btn-primary" id="updateBtn"
+                                                            onclick="updateData();">Update</button></a>
+                                                        <!-- href="Services.html" -->
                                                     </div>
                                                 </div>
-
 
                                             </form>
                                         </div>
@@ -782,6 +775,55 @@
 
         });
     </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Retrieve data from local storage
+            const updateData = JSON.parse(localStorage.getItem('updateData'));
+            if (updateData) {
+                // Populate form fields with the retrieved data
+                document.getElementById('selected-image').src = 'data:image/jpeg;base64,' + updateData.image;
+                document.getElementById('open_hours').value = updateData.open_hours;
+                document.getElementById('footer_title').value = updateData.footer_title;
+                document.getElementById('text').value = updateData.text;
+                document.getElementById('ping_now').value = updateData.ping_now;
+                document.getElementById('id').value = updateData.id;
+
+                // Add event listener to the update button
+                document.getElementById('updateBtn').addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent default form submission
+                    updateData(); // Call the updateData function
+                });
+            }
+        });
+    </script>
+
+    <script>
+        // Get a reference to the file input and image tag
+        const updateImageInput = document.getElementById('image-input');
+        const updateSelectedImage = document.getElementById('selected-image');
+
+        // Add event listener to the file input
+        updateImageInput.addEventListener('change', function () {
+            // Check if any file is selected
+            if (updateImageInput.files && updateImageInput.files[0]) {
+                // Create a FileReader object
+                const reader = new FileReader();
+
+                // Set up the reader onload function
+                reader.onload = function (e) {
+                    // Update the src attribute of the image tag
+                    updateSelectedImage.src = e.target.result;
+                };
+
+                // Read the data URL of the selected file
+                reader.readAsDataURL(updateImageInput.files[0]);
+            }
+        });
+    </script>
+
+
 
 </body>
 
