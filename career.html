@@ -5,13 +5,17 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="career-form.js"></script>
+
     <title>Career - IBG-Infotech</title>
     <meta name="robots" content="noindex, nofollow">
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <script src="testimonials.js"></script>
-
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
         integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
@@ -357,7 +361,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="Add-services.html">
+                        <a href="Services2.html">
                             <i class="bi bi-circle"></i><span>Why IBG Infotech</span>
                         </a>
                     </li>
@@ -555,121 +559,24 @@
 
                                 <div class="card-block table-border-style">
                                     <div class="table-responsive">
-                                        <table class="table" id="dtTable">
+                                        <table class="table" id="dataTable">
 
                                             <thead>
                                                 <tr>
                                                     <th>sr No.</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
-                                                    <th>Address</th>
-                                                    <th>Date of Birth</th>
+                                                    <th>Address</th>                                       
                                                     <th>Education</th>
-                                                    <th>Description</th>
-                                                    <th>Position</th>
-                                                    <th>Phone Number</th>
+                                                    <th>Phone Number</th>    
+                                                    <th>Date Of Birth</th>                                            
                                                     <th>Resume</th>
                                                     <th>Cover Letter</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
 
-
-                                            <tbody>
-
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Khushal Patil</td>
-                                                    <td>abc123@gmail.com</td>
-                                                    <td>jdhfhfhjfjhfhj</td>
-                                                    <td>Date of birth</td>
-                                                    <td>Education</td>
-                                                    <td>jhdgfuygfiydgiffifffffff</td>
-                                                    <td>jhbjhdfhjf</td>
-                                                    <td>865754775</td>
-
-                                                    <!-- <input type="file" class="form-control" name="document"
-                                                            id="documentInput" accept=".pdf" style="display: none"
-                                                            onchange="updateFileName()"> <label class="input-group-text"
-                                                            for="documentInput"
-                                                            onclick="triggerFileInputClick()"></label> -->
-                                                    <td><i class="bi bi-upload"></i></td>
-                                                    <td><i class="bi bi-upload"></i></td>
-
-
-
-                                                    <td><a href="update-career.html" class="waves-effect"
-                                                            data-toggle="tooltip" data-placement="top" title=""
-                                                            data-original-title="Edit Testimonial"><i
-                                                                class="ti-pencil"></i> Edit</a>
-
-
-                                                        <a href="javascript:void(0);" class="waves-effect delete_entry"
-                                                            data-toggle="tooltip" data-placement="top" title=""
-                                                            data-original-title="Delete Testimonial" data-id="17"
-                                                            data-tabl="testimonials"><i class="ti-trash"></i> Delete</a>
-                                                    </td>
-                                                </tr>
-
-
-
-                                                <!-- <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Sagar Patil</td>
-                                                    <td>abc123@gmail.com</td>
-                                                    <td>jdhfhfhjfjhfhj</td>
-                                                    <td>Date of birth</td>
-                                                    <td>Education</td>
-                                                    <td>jhdgfuygfiydgiffifffffff</td>
-                                                    <td>jhbjhdfhjf</td>
-                                                    <td>865754775</td>
-                                                    <td><i class="bi bi-upload"></i></td>
-                                                    <td><i class="bi bi-upload"></i></td>
-
-
-                                                    <td><a href="update-career.html" class="waves-effect"
-                                                            data-toggle="tooltip" data-placement="top" title=""
-                                                            data-original-title="Edit Testimonial"><i
-                                                                class="ti-pencil"></i> Edit</a>
-
-
-                                                        <a href="javascript:void(0);" class="waves-effect delete_entry"
-                                                            data-toggle="tooltip" data-placement="top" title=""
-                                                            data-original-title="Delete Testimonial" data-id="17"
-                                                            data-tabl="testimonials"><i class="ti-trash"></i> Delete</a>
-                                                    </td>
-                                                </tr> -->
-
-
-
-                                                <!-- <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Navnath Rodge</td>
-                                                    <td>abc123@gmail.com</td>
-                                                    <td>jdhfhfhjfjhfhj</td>
-                                                    <td>Date of birth</td>
-                                                    <td>Education</td>
-                                                    <td>jhdgfuygfiydgiffifffffff</td>
-                                                    <td>jhbjhdfhjf</td>
-                                                    <td>865754775</td>
-                                                    <td><i class="bi bi-upload"></i></td>
-                                                    <td><i class="bi bi-upload"></i></td>
-
-
-                                                    <td><a href="update-career.html" class="waves-effect"
-                                                            data-toggle="tooltip" data-placement="top" title=""
-                                                            data-original-title="Edit Testimonial"><i
-                                                                class="ti-pencil"></i> Edit</a>
-
-
-                                                        <a href="javascript:void(0);" class="waves-effect delete_entry"
-                                                            data-toggle="tooltip" data-placement="top" title=""
-                                                            data-original-title="Delete Testimonial" data-id="17"
-                                                            data-tabl="testimonials"><i class="ti-trash"></i> Delete</a>
-                                                    </td>
-                                                </tr> -->
-
-
+                                            <tbody id="dataTableBody">
 
                                             </tbody>
                                         </table>
@@ -727,12 +634,6 @@
         integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA=="
         data-cf-beacon='{"rayId":"8465544dad3f0e38","version":"2023.10.0","token":"68c5ca450bae485a842ff76066d69420"}'
         crossorigin="anonymous"></script>
-
-
-
-
-
-
 
 
     <script type="text/javascript" src="https://www.legaster.com/public/assets/js/jquery/jquery.min.js"></script>

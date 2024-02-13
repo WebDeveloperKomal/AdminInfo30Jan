@@ -10,6 +10,9 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="career-form.js"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
         integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
 
@@ -358,7 +361,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="Add-services.html">
+                        <a href="Services2.html">
                             <i class="bi bi-circle"></i><span>Why IBG Infotech</span>
                         </a>
                     </li>
@@ -553,11 +556,17 @@
                                                 <input type="hidden" name="csrf_test_name"
                                                     value="096ea39265669eaff30f4bc704d6260c" />
 
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12">
+                                                        <!-- <label class="col-form-label">ID</label> -->
+                                                        <input type="hidden" class="form-control" name="id" id="id">
+                                                    </div>
+                                                </div>
 
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Name</label>
-                                                        <input type="text" class="form-control" name="name">
+                                                        <input type="text" class="form-control" name="name" id="name">
                                                     </div>
                                                 </div>
 
@@ -565,7 +574,8 @@
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Email</label>
-                                                        <input type="email" class="form-control" name="email">
+                                                        <input type="email" class="form-control" name="email"
+                                                            id="email">
                                                     </div>
                                                 </div>
 
@@ -573,7 +583,8 @@
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Address</label>
-                                                        <input type="text" class="form-control" name="address">
+                                                        <input type="text" class="form-control" name="address"
+                                                            id="address">
                                                     </div>
                                                 </div>
 
@@ -581,7 +592,7 @@
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Date Of Birth</label>
-                                                        <input type="text" class="form-control" name="date of birth">
+                                                        <input type="date" class="form-control" name="dob" id="dob">
                                                     </div>
                                                 </div>
 
@@ -589,7 +600,8 @@
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Education</label>
-                                                        <input type="text" class="form-control" name="education">
+                                                        <input type="text" class="form-control" name="education"
+                                                            id="education">
                                                     </div>
                                                 </div>
 
@@ -598,110 +610,41 @@
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Description</label>
-                                                        <textarea class="form-control" name="description" id="editor2">
-                                                            <!-- <p>Legaster&nbsp;offers a diverse range of services in real estate including residential, commercial, industrial, hotels, tourism, SEZs space, etc. We have conducted due diligence, advised upon, structured, and negotiated on land acquisitions, joint development arrangements, leasing, and financing for various types of properties including in the case of redevelopments, slum rehabilitation projects, affordable housing projects, government leases, mega food parks, logistic parks, solar projects, integrated townships, etc. across states in India.</p>
-
-<p>Additionally,<strong>&nbsp;</strong>Legaster&nbsp;has also advised on an entire spectrum of issues affecting investment in the real estate space in the country.</p>
-
-<p>The team also advises various developers, investors, and financing institutions in relation to compliances under RERA, across different states in India. This includes handholding our clients and working very closely with them for registration of various projects, including discussions with the technical and accounting teams of the developers, wherever required.&nbsp;<strong>Legaster&rsquo;s</strong>&nbsp;team has a good understanding and grip on the local real estate laws affecting projects and real estate transactions across states in the country and our endeavor is to bridge the gap between addressing legal requirements regulating investments in this sector and tying them to commercial viable solutions.</p>
-
-<h3><strong>Land Acquisition</strong></h3>
-
-<ol>
-<li>Comprehensive title searches and due diligence across most states in India.</li>
-<li>Advice on the statutory permissions and/or approvals to be procured, zoning requirements, including the timelines involved.</li>
-<li>Structuring and drafting conveyance documents in case of aggregation and otherwise.</li>
-<li>Advice on the Stamp duty, registration fees, and other acquisition costs.</li>
-</ol>
-
-<h3><strong>Project Development and Construction Contracts</strong></h3>
-
-<ol>
-<li>Structuring and advising on the development contracts in relation to different projects including joint development arrangements, redevelopments, slum rehabilitation schemes, etc.</li>
-<li>Structuring and advising on the development of industrial parks, logistic parks, SEZs, etc.</li>
-<li>Advising on documentation and agreements with contractors, architects, engineers, etc.</li>
-<li>Drafting of the documents in relation to the sale/allotment of the units/areas under a project including an agreement to sell, conveyance documents, lease documents, possession letters, etc.</li>
-</ol>
-
-<p><strong>RERA Compliance Advisory</strong></p>
-
-<ol>
-<li>Advising developers on the compliances under RERA and handholding for the registration of projects with RERA authorities in different states in India.</li>
-<li>Advising developers and promoters on compliance under RERA in relation to specific instances under various projects.</li>
-<li>Advising banks, financial institutions, and developers on the compliances under RERA in various states including the required mechanisms in different projects to ensure that the projects are in compliance with the provisions of RERA.</li>
-</ol>
-
-<h3><strong>Due Diligence</strong></h3>
-
-<ol>
-<li>Conducting title searches with the offices of the Sub-Registrar of Assurances, Revenue Authorities, etc., and providing title due diligence reports and title certificates in relation to properties situated in different states in India for the purposes of acquisitions, mortgages, etc.</li>
-<li>Conducting due diligence&nbsp;of the property-owning entities where the structure requires the acquisition of or investments in the entities owning subject properties.</li>
-</ol> -->
-</textarea>
+                                                        <textarea class="form-control" name="description"
+                                                            id="editor2"></textarea>
                                                     </div>
                                                 </div>
-
-
-                                                <!--<div class="form-group row">
-            <div class="col-sm-6">
-             
-                <input type="checkbox"   name="is_end_to_end_interior" value="1"> End-to-end interior solutions ?
-            </div>
-             
-        </div>-->
-
-
 
                                                 <div class="form-group row">
 
                                                     <div class="col-sm-6">
                                                         <label class="col-form-label">Position</label>
-                                                        <input type="text" class="form-control" name="position">
+                                                        <input type="text" class="form-control" name="position"
+                                                            id="position">
                                                     </div>
 
 
                                                     <div class="col-sm-6">
                                                         <label class="col-form-label">Phone Number</label>
-                                                        <input type="text" class="form-control" name="phone number">
-                                                    </div>
-
-
-                                                </div>
-
-                                                <!-- ------------------------------------------------------- -->
-
-                                                <div class="form-group row">
-                                                    <div class="col-sm-12">
-                                                        <label class="col-form-label">Resume</label>
-                                                        <img class="slide_img form-control" src="#" alt="Preview">
+                                                        <input type="text" class="form-control" name="phone number"
+                                                            id="phone_number">
                                                     </div>
                                                 </div>
-
 
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Upload Resume (PDF only)</label>
                                                         <input type="file" class="form-control" name="resume"
-                                                            accept=".pdf" onchange="previewFile()">
+                                                            id="resume" accept=".pdf" onchange="previewFile()">
                                                     </div>
                                                 </div>
-
-                                                <!-- ------------------------------------------------------ -->
-
-                                                <div class="form-group row">
-                                                    <div class="col-sm-12">
-                                                        <label class="col-form-label">Cover Letter</label>
-                                                        <img class="slide_img form-control" src="#" alt="Preview">
-                                                    </div>
-                                                </div>
-
 
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Upload Cover Letter (PDF
                                                             only)</label>
-                                                        <input type="file" class="form-control" name="resume"
-                                                            accept=".pdf" onchange="previewFile()">
+                                                        <input type="file" class="form-control" name="covr_letter"
+                                                            id="covr_letter" accept=".pdf" onchange="previewFile()">
                                                     </div>
                                                 </div>
 
@@ -709,11 +652,11 @@
 
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <a href="career.html" button
-                                                            class="btn btn-primary">Save</button></a>
+                                                        <a button class="btn btn-primary" id="updateBtn"
+                                                            onclick="updateData();">Update</button></a>
+                                                        <!-- href="Services.html" -->
                                                     </div>
                                                 </div>
-
 
                                             </form>
                                         </div>
@@ -738,9 +681,6 @@
         </div>
         </div>
         </div>
-
-
-
 
 
     </main><!-- End #main -->
@@ -872,6 +812,54 @@
 
         });
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Retrieve data from local storage
+            const updateData = JSON.parse(localStorage.getItem('updateData'));
+            console.log('Update Data:', updateData); // Log the updateData object
+
+            if (updateData) {
+                // Populate form fields with the retrieved data
+                document.getElementById('name').value = updateData.name;
+                document.getElementById('email').value = updateData.email;
+                document.getElementById('address').value = updateData.address;
+
+                // Format Date of Birth (dob) field as "dd/mm/yyyy"
+                const dobDate = new Date(updateData.dob);
+                const formattedDob = formatDate(dobDate);
+                document.getElementById('dob').value = formattedDob;
+
+                document.getElementById('education').value = updateData.education;
+                document.getElementById('editor2').value = updateData.description;
+                document.getElementById('position').value = updateData.position;
+                document.getElementById('phone_number').value = updateData.phone_number;
+                document.getElementById('id').value = updateData.id;
+
+                // Set CKEditor content with the retrieved data
+                CKEDITOR.replace('editor2', {
+                    height: 260
+                });
+                CKEDITOR.instances.editor2.setData(updateData.description);
+
+            } else {
+                console.error('No update data found in local storage');
+            }
+        });
+
+        // Function to format date as "dd/mm/yyyy"
+        function formatDate(date) {
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+            // Pad single-digit day and month with leading zero
+            const formattedDay = day < 10 ? '0' + day : day;
+            const formattedMonth = month < 10 ? '0' + month : month;
+            return formattedDay + '/' + formattedMonth + '/' + year;
+        }
+
+    </script>
+
 
 </body>
 
