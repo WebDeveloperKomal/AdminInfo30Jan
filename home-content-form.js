@@ -47,23 +47,53 @@ function HomeContentsave() {
                 throw new Error('Network response was not ok');
             }
             return response.json();
+            // window.location.href = 'Home-content.html';
         })
 
         .then(data => {
             console.log('Server response:', data);
-            alert('Save Data Successfully!');
-            window.location.href = 'Home-content.html';
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Saved!',
+                text: 'Data has been saved successfully.',
+            }).then((result) => {
+
+                document.getElementById('text').value = '';
+                document.getElementById('text1').value = '';
+                document.getElementById('text2').value = '';
+                document.getElementById('facts').value = '';
+                document.getElementById('facts_text').value = '';
+                document.getElementById('nations').value = '';
+                document.getElementById('members').value = '';
+                document.getElementById('awards').value = '';
+                document.getElementById('satisfied_customer').value = '';
+                document.getElementById('middle_text').value = '';
+                document.getElementById('middle_text1').value = '';
+                document.getElementById('cus_review').value = '';
+                document.getElementById('cus_review_text').value = '';
+
+                window.location.href = 'Home-content.html';
+
+                getData();
+            });
         })
 
         .catch(error => {
             console.error('Error:', error);
-            alert('Failed to save data. Please try again.');
+            window.location.href = 'Home-Content-form.html';
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: 'Failed to save data. Please try again.',
+            });
         });
 }
 
 
 
-// ------------------------------------------------------------------------------
+
 
 
 

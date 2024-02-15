@@ -1,18 +1,18 @@
-// -------------------------save the data----------------------------------------------------
+// ----------------------save the data--------------------------------------
 
 function previewImage() {
-    const imageFile = document.getElementById('imageFile').files[0];
+    const imagePath = document.getElementById('imagePath').files[0];
     const imagePreview = document.getElementById('imagePreview');
 
-    if (imageFile) {
+    if (imagePath) {
         const reader = new FileReader();
         reader.onload = function (event) {
             imagePreview.src = event.target.result;
             imagePreview.style.display = 'block';
         };
-        reader.readAsDataURL(imageFile);
+        reader.readAsDataURL(imagePath);
 
-        document.getElementById('imagePath').value = imageFile.name;
+        document.getElementById('imageFile').value = imagePath.name;
     } else {
         imagePreview.style.display = 'none';
     }
@@ -20,24 +20,25 @@ function previewImage() {
 
 
 function saveData() {
-
-    var about = document.getElementById('about').value;
-    var about_title = document.getElementById('about_title').value;
-    var about_text = document.getElementById('about_text').value;
-    var imageFile = document.getElementById('imageFile').files[0];
+    var title = document.getElementById('title').value;
+    var text = document.getElementById('text').value;
+    var imagePath = document.getElementById('imagePath').files[0];
+    var page = document.getElementById('page').value;
 
     var formData = new FormData();
     formData.append('data', JSON.stringify({
-        about: about,
-        about_title: about_title,
-        about_text: about_text
+        title: title,
+        text: text,
+        page: page
     }));
 
-    formData.append('imageFile', imageFile);
+    if (imagePath) {
+        formData.append('image', imagePath);
+    }
 
     var jwtToken = localStorage.getItem('jwtToken');
 
-    if (!about || !about_title || !about_text || !imageFile) {
+    if (!title || !text || !imagePath || !page) {
         alert('Please fill in all required fields.');
         return;
     }
@@ -47,7 +48,7 @@ function saveData() {
         return;
     }
 
-    fetch('http://localhost:8181/ibg-infotech/auth/save-home-about', {
+    fetch('http://localhost:8181/ibg-infotech/auth/add-new-slider', {
         method: 'POST',
         body: formData,
         headers: {
@@ -59,9 +60,7 @@ function saveData() {
                 throw new Error('Network response was not ok');
             }
             return response.json();
-
         })
-
         .then(data => {
             console.log('Server response:', data);
 
@@ -69,26 +68,22 @@ function saveData() {
                 icon: 'success',
                 title: 'Saved!',
                 text: 'Data has been saved successfully.',
-            }).then((result) => {
-
-                document.getElementById('about').value = '';
-                document.getElementById('about_title').value = '';
-                document.getElementById('about_text').value = '';
-                document.getElementById('imageFile').value = '';
-
-                window.location.href = 'Home-about-us-content.html';
-
-                getData();
+            }).then(() => {
+                // Reset form and redirect only after successful data saving
+                document.getElementById('myForm').reset();
+                window.location.href = 'Home-Slider.html';
             });
         })
         .catch(error => {
             console.error('Error:', error);
-            window.location.href = 'Home-about-content-form.html';
-
+            
             Swal.fire({
                 icon: 'error',
                 title: 'Error!',
                 text: 'Failed to save data. Please try again.',
+            }).then(() => {
+                // Redirect to error page only if there's a failure in saving data
+                window.location.href = 'Home-Slider-form.html';
             });
         });
 }

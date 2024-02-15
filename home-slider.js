@@ -1,4 +1,4 @@
-// -----------------------------get all the data-----------------------------------------------------------
+// -----------------------get all the data--------------------------------------
 
 var jwtToken = localStorage.getItem('jwtToken');
 
@@ -7,12 +7,13 @@ document.addEventListener('DOMContentLoaded', getData);
 function getData() {
     var jwtToken = localStorage.getItem('jwtToken');
 
-    fetch('http://localhost:8181/ibg-infotech/auth/get-all-home-about', {
+    fetch('http://localhost:8181/ibg-infotech/auth/get-all-home-slider', {
         method: 'GET',
         headers: {
             'Authorization': 'Bearer ' + jwtToken,
         },
     })
+
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -49,66 +50,70 @@ function populateTable(data) {
         data.forEach((item, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${index + 1}</td>
-                <td>${item.about}</td>
-                <td>${item.about_title}</td>
-                <td>${item.about_text}</td>
-                <td><img src="data:image/jpeg;base64,${item.image_a}" width="100" height="100"></td>
-                <td>
-                    <a class="edit-btn" data-id="${item.id}"><i class="ti-pencil"></i> Edit</a>
-                    <a class="delete-btn" data-id="${item.id}"><i class="ti-trash"></i> Delete</a>
-                </td>
-            `;
+            <td>${index + 1}</td>
+            <td>${item.title}</td>
+            <td>${item.text}</td>
+            <td>${item.page}</td>
+            <td><img src="data:image/jpeg;base64,${item.image}" width="100" height="100"></td>
+            <td>
+                <a class="edit-btn" data-id="${item.id}"><i class="ti-pencil"></i> Edit</a>
+                <a class="delete-btn" data-id="${item.id}"><i class="ti-trash"></i> Delete</a>
+            </td>
+        `;
 
             tableBody.appendChild(row);
 
             const editBtn = row.querySelector('.edit-btn');
             editBtn.addEventListener('click', function () {
-                const id = editBtn.getAttribute('data-id');
-                console.log("Edit button clicked for ID: " + id);
+                const id = this.getAttribute('data-id'); // Use 'this' instead of 'editBtn'
+                console.log("Edit button clicked for ID:" + id);
 
-                fetch(`http://localhost:8181/ibg-infotech/auth/get-home-about/${id}`, {
+                fetch(`http://localhost:8181/ibg-infotech/auth/slider-data/${id}`, {
                     method: 'GET',
                     headers: {
                         'Authorization': 'Bearer ' + jwtToken,
                     },
                 })
-
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
                         }
                         return response.json();
                     })
-
                     .then(data => {
-                        localStorage.setItem('updateData', JSON.stringify(data.data));
-                        window.location.href = 'Update-home-about-content.html';
-
+                        if (data) {
+                            localStorage.setItem('updateData', JSON.stringify(data));
+                            window.location.href = 'Update-Home-Slider.html';
+                        } else {
+                            console.error('Data received from server is invalid:', data);
+                        }
                     })
                     .catch(error => {
                         console.error('Error fetching home about content data:', error);
                     });
-
             });
+
 
             const deleteBtn = row.querySelector('.delete-btn');
             deleteBtn.addEventListener('click', () => {
                 const id = deleteBtn.getAttribute('data-id');
-                deleteAboutContent(id);
+                deleteHomeSlider(id);
             });
+
         });
     } else {
         console.error('Data received is not an array:', data);
     }
 }
 
-// -----------------------------delete the data by id-----------------------------------------------------------
 
-function deleteAboutContent(id) {
+// --------------------------------delete the data by id ------------------------------------------------
+
+
+function deleteHomeSlider(id) {
     var jwtToken = localStorage.getItem('jwtToken');
 
-    fetch(`http://localhost:8181/ibg-infotech/auth/delete-home-about/${id}`, {
+    fetch(`http://localhost:8181/ibg-infotech/auth/delete-slider/${id}`, {
         method: 'DELETE',
         headers: {
             'Authorization': 'Bearer ' + jwtToken,
@@ -128,7 +133,7 @@ function deleteAboutContent(id) {
             Swal.fire({
                 icon: 'success',
                 title: 'Deleted!',
-                text: 'home about content has been deleted successfully.',
+                text: 'home slider has been deleted successfully.',
             }).then((result) => {
 
                 getData();
@@ -136,27 +141,30 @@ function deleteAboutContent(id) {
         })
 
         .catch(error => {
-            console.error('Error home about content home about content:', error);
+            console.error('Error home slider:', error);
 
             Swal.fire({
                 icon: 'error',
                 title: 'Error!',
-                text: 'Failed to delete the home about content. Please try again later.',
+                text: 'Failed to delete the home slider. Please try again later.',
             });
         });
 }
 
-// --------------------------update data by id--------------------------------------------------
+
+// -------------------------------update data by id-----------------------------------------------------
+
+
 
 function updateData() {
     var id = document.getElementById('id').value;
-    var about = document.getElementById('about').value;
-    var about_title = document.getElementById('about_title').value;
-    var about_text = document.getElementById('about_text').value;
+    var title = document.getElementById('title').value;
+    var text = document.getElementById('text').value;
+    var page = document.getElementById('page').value;
     var imageFile = document.getElementById('image-input').files[0];
     var jwtToken = localStorage.getItem('jwtToken');
 
-    if (!about || !about_title || !about_text) {
+    if (!title || !text || !page) {
         alert('Please fill in all required fields.');
         return;
     }
@@ -167,24 +175,23 @@ function updateData() {
     }
 
     var formData = new FormData();
-    formData.append('about_title', about_title);
-    formData.append('about_text', about_text);
-    formData.append('about', about);
-    formData.append('id', id); // Add ID to the form data
+    formData.append('title', title);
+    formData.append('text', text);
+    formData.append('page', page);
 
     var jsonData = {
-        about_title: about_title,
-        about_text: about_text,
-        about: about
+        title: title,
+        text: text,
+        page: page,
     };
 
     formData.append('data', JSON.stringify(jsonData));
 
     if (imageFile) {
-        formData.append('imageFile', imageFile);
+        formData.append('image', imageFile);
     }
 
-    fetch(`http://localhost:8181/ibg-infotech/auth/update-home-about/${id}`, {
+    fetch(`http://localhost:8181/ibg-infotech/auth/update-slider/${id}`, {
         method: 'PUT',
         body: formData,
         headers: {
@@ -205,7 +212,7 @@ function updateData() {
                     title: 'Updated!',
                     text: 'Data has been updated successfully.',
                 }).then((result) => {
-                    window.location.href = 'Home-about-us-content.html';
+                    window.location.href = 'Home-Slider.html';
                 });
             } else {
                 Swal.fire({

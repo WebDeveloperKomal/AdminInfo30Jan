@@ -10,6 +10,11 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="home-slider-form.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/formdata-polyfill/3.0.12/formdata.min.js"></script> -->
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
         integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
 
@@ -44,12 +49,6 @@
     <link href="assets/css/style.css" rel="stylesheet">
 
 
-    <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 
     <link rel="stylesheet" type="text/css"
         href="https://www.legaster.com/public/assets/css/bootstrap/css/bootstrap.min.css">
@@ -73,7 +72,7 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="Dashboard.html" class="logo d-flex align-items-center">
-                <img src="final logo.png" alt="">
+                <img src="blue bg logo-07.png" alt="">
                 <!-- <span class="d-none d-lg-block">NiceAdmin</span> -->
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -263,9 +262,9 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" href="index.html">
                                 <i class="bi bi-box-arrow-right"></i>
-                                <span>Sign Out</span>
+                                <span>Log Out</span>
                             </a>
                         </li>
 
@@ -276,6 +275,8 @@
         </nav><!-- End Icons Navigation -->
 
     </header><!-- End Header -->
+
+
 
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
@@ -349,12 +350,17 @@
                 </a>
                 <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
+                        <a href="infoservice.html">
+                            <i class="bi bi-circle"></i><span>Services</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="Services.html">
                             <i class="bi bi-circle"></i><span>Service Content</span>
                         </a>
                     </li>
                     <li>
-                        <a href="Add-services.html">
+                        <a href="Services2.html">
                             <i class="bi bi-circle"></i><span>Why IBG Infotech</span>
                         </a>
                     </li>
@@ -401,21 +407,9 @@
                     <span>Our Team</span>
                 </a>
             </li>
-            <!-- End Icons Nav -->
-
-
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-                    <i class="bi bi-person-circle"></i>
-                    <span>Our Portfolio</span>
-                </a>
-            </li> -->
-
-            <!-- End Icons Nav -->
-
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="Add-blog.html">
+                <a class="nav-link collapsed" href="Blogs.html">
                     <i class="bi bi-substack"></i>
                     <span>Blogs</span>
                 </a>
@@ -444,24 +438,6 @@
 
 
             <li class="nav-heading">Pages</li>
-            <!-- 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
-                    <i class="bi bi-person"></i>
-                    <span>Profile</span>
-                </a>
-            </li> -->
-            <!-- End Profile Page Nav -->
-
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-faq.html">
-                    <i class="bi bi-question-circle"></i>
-                    <span>F.A.Q</span>
-                </a>
-            </li> -->
-            <!-- End F.A.Q Page Nav -->
-
-
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="pages-register.html">
@@ -469,35 +445,7 @@
                     <span>Register</span>
                 </a>
             </li>
-            <!-- End Register Page Nav -->
 
-
-
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-login.html">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Log Out</span>
-                </a>
-            </li> -->
-            <!-- End Login Page Nav -->
-
-
-
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-error-404.html">
-                    <i class="bi bi-dash-circle"></i>
-                    <span>Error 404</span>
-                </a>
-            </li> -->
-            <!-- End Error 404 Page Nav -->
-
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-blank.html">
-                    <i class="bi bi-file-earmark"></i>
-                    <span>Blank</span>
-                </a>
-            </li> -->
-            <!-- End Blank Page Nav -->
 
         </ul>
 
@@ -512,12 +460,7 @@
 
         <div class="pagetitle">
             <h1>Home Slider</h1>
-            <!-- <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Contact List</li>
-                </ol>
-            </nav> -->
+
         </div><!-- End Page Title -->
 
 
@@ -533,6 +476,7 @@
                                 <div class="col-sm-12">
                                     <!-- Basic Form Inputs card start -->
                                     <div class="card">
+
                                         <div class="card-header">
                                             <h5>Add Home Slider</h5>
                                             <div class="card-header-right"><i class="icofont icofont-spinner-alt-5"></i>
@@ -541,11 +485,12 @@
                                                 <i class="icofont icofont-spinner-alt-5"></i>
                                             </div>
                                         </div>
+
                                         <div class="card-block">
 
 
                                             <form action="https://www.legaster.com/admin-panel/edit-service-category/66"
-                                                method="post" enctype="multipart/form-data">
+                                                method="post" enctype="multipart/form-data" id="formData">
                                                 <input type="hidden" name="csrf_test_name"
                                                     value="096ea39265669eaff30f4bc704d6260c" />
 
@@ -553,47 +498,45 @@
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Title</label>
-                                                        <input type="text" class="form-control" name="title">
+                                                        <input type="text" class="form-control" name="title" id="title">
                                                     </div>
                                                 </div>
-
 
 
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Text</label>
-                                                        <input type="text" class="form-control" name="text">
+                                                        <textarea class="form-control" rows="6" cols="6" colname="text"
+                                                            id="text"></textarea>
                                                     </div>
                                                 </div>
 
-
-                                                <!-- ------------------------------------------------------ -->
 
 
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Image</label>
-                                                        <img class="slide_img form-control" src="#">
+                                                        <img id="imagePreview" class="slide_img form-control" src="#"
+                                                            alt="Preview">
+                                                        <!-- style="display: none;" -->
                                                     </div>
                                                 </div>
 
-                                                <!-- https://www.legaster.com/public/assets/images/service_category/1668278560_e0d973a644f7d48b103d.jpg -->
 
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Upload Image</label>
-                                                        <input type="file" class="form-control" name="image">
+                                                        <input type="file" class="form-control" id="imagePath" name="image"
+                                                            onchange="previewImage()">
+                                                        <input type="hidden" id="imageFile" name="imagePath">
                                                     </div>
                                                 </div>
-
-
-                                                <!-- ----------------------------------------------------------- -->
 
 
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <label class="col-form-label">Page</label>
-                                                        <input type="text" class="form-control" name="page">
+                                                        <input type="text" class="form-control" name="page" id="page">
                                                     </div>
                                                 </div>
 
@@ -601,8 +544,10 @@
 
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <a href="Home-Slider.html" button
-                                                            class="btn btn-primary">Save</button></a>
+                                                        <a button class="btn btn-primary"
+                                                            onclick="saveData(); return false;"
+                                                            style="color: white;">Save</button></a>
+                                                        <!--   -->
                                                     </div>
                                                 </div>
 
