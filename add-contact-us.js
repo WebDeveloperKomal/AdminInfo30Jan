@@ -1,3 +1,4 @@
+// ----------------------------save the data------------------------------------
 
 function saveData() {
     var saveData = {
@@ -7,7 +8,7 @@ function saveData() {
         map: document.getElementById('map').value
     };
 
-    // Retrieve JWT token from localStorage
+
     var jwtToken = localStorage.getItem('jwtToken');
 
     console.log('Request Data:', JSON.stringify(saveData));
@@ -18,9 +19,7 @@ function saveData() {
     }
 
     if (!jwtToken) {
-        // JWT token is missing, prompt user to log in again
         alert('JWT token is missing. Please log in again.');
-        // Redirect user to login page or perform any other action as necessary
         return;
     }
 
@@ -40,26 +39,24 @@ function saveData() {
         })
         .then(data => {
             console.log('Server response:', data);
-            // Show SweetAlert upon successful save
+
             Swal.fire({
                 icon: 'success',
                 title: 'Saved!',
                 text: 'Data has been saved successfully.',
             }).then((result) => {
-                // Optionally, you can perform additional actions after the alert is closed
-                // For example, you can clear form fields or reload data
+
                 document.getElementById('address').value = '';
                 document.getElementById('phone').value = '';
                 document.getElementById('email').value = '';
                 document.getElementById('map').value = '';
                 window.location.href = 'Contact-Us.html';
-                // Reload data if needed
-                // getData();
+
             });
         })
         .catch(error => {
             console.error('Error:', error);
-            // Show SweetAlert for error
+
             Swal.fire({
                 icon: 'error',
                 title: 'Error!',
@@ -69,6 +66,7 @@ function saveData() {
 }
 
 
+// ------------------------------get all the data--------------------------------------
 
 var jwtToken = localStorage.getItem('jwtToken');
 
@@ -92,7 +90,7 @@ function getData() {
         })
         .then(data => {
             console.log(data);
-            populateTable(data.data); // Assuming your data object has a 'data' property containing the array
+            populateTable(data.data);
         })
         .catch(error => {
             console.error('Error fetching data:', error);
@@ -111,7 +109,7 @@ function arrayBufferToBase64(buffer) {
 }
 
 
-// Update the populateTable function to include data for name, title, description, and image
+
 function populateTable(data) {
     const tableBody = document.getElementById('dataTableBody');
     tableBody.innerHTML = '';
@@ -127,8 +125,8 @@ function populateTable(data) {
                 <td>${item.services}</td>
                 <td>${item.text}</td>               
                 <td>
-                    <button class="edit-btn" data-id="${item.id}">Edit</button>
-                    <button class="delete-btn" data-id="${item.id}">Delete</button>
+                    <a class="edit-btn" data-id="${item.id}"><i class="ti-pencil"></i>Edit</a>
+                    <a class="delete-btn" data-id="${item.id}"><i class="ti-trash"></i>Delete</a>
                 </td>
             `;
             tableBody.appendChild(row);
@@ -137,7 +135,7 @@ function populateTable(data) {
             editBtn.addEventListener('click', function () {
                 const id = editBtn.getAttribute('data-id');
                 console.log("Edit button clicked for ID: " + id);
-                // Fetch data for the selected item
+
                 fetch(`http://localhost:8181/ibg-infotech/auth/get-contact-us/${id}`, {
                     method: 'GET',
                     headers: {
@@ -151,10 +149,10 @@ function populateTable(data) {
                         return response.json();
                     })
                     .then(data => {
-                        // Store fetched data in local storage
+
                         localStorage.setItem('updateData', JSON.stringify(data.data));
 
-                        // Redirect to update-services.html
+
                         window.location.href = 'update-contact.html';
                     })
                     .catch(error => {
@@ -162,7 +160,7 @@ function populateTable(data) {
                     });
             });
 
-            // Add event listener to delete button
+
             const deleteBtn = row.querySelector('.delete-btn');
             deleteBtn.addEventListener('click', () => {
                 const id = deleteBtn.getAttribute('data-id');
@@ -176,6 +174,7 @@ function populateTable(data) {
 
 
 // ----------------------------------------delete by id-----------------------------------------------
+
 
 function deleteService(id) {
     var jwtToken = localStorage.getItem('jwtToken');
@@ -194,20 +193,19 @@ function deleteService(id) {
         })
         .then(data => {
             console.log(data);
-            // Show SweetAlert upon successful deletion
+
             Swal.fire({
                 icon: 'success',
                 title: 'Deleted!',
                 text: 'Service has been deleted successfully.',
             }).then((result) => {
-                // Reload the data or update the UI as needed
-                // For example, you can remove the deleted row from the table
-                getData(); // Reload the data after deletion
+
+                getData();
             });
         })
         .catch(error => {
             console.error('Error deleting service:', error);
-            // Show SweetAlert for error
+
             Swal.fire({
                 icon: 'error',
                 title: 'Error!',
@@ -221,7 +219,7 @@ function deleteService(id) {
 
 
 function updateData() {
-    var id = document.getElementById('id').value; // Fetch the ID from the form
+    var id = document.getElementById('id').value;
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var services = document.getElementById('services').value;
@@ -229,19 +227,19 @@ function updateData() {
     var phone = document.getElementById('phone').value;
     var jwtToken = localStorage.getItem('jwtToken');
 
-    // Validate if the required fields are filled
+
     if (!name || !text || !email || !phone) {
         alert('Please fill in all required fields.');
         return;
     }
 
-    // Validate JWT token
+
     if (!jwtToken) {
         alert('JWT token is missing. Please log in again.');
         return;
     }
 
-    // Prepare data object for submission
+
     var data = {
         name: name,
         email: email,
@@ -272,7 +270,7 @@ function updateData() {
                     title: 'Updated!',
                     text: 'Data has been updated successfully.',
                 }).then((result) => {
-                    // Optionally redirect or perform other actions upon successful update
+
                     window.location.href = 'Contact-Us.html';
                 });
             } else {
